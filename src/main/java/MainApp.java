@@ -15,8 +15,10 @@ public class MainApp {
         arrayPoints.add(point4);
         arrayPoints.add(point1);
 
+        //создается замкнутая кривая
         ClosedPolyLine p1 = new ClosedPolyLine(arrayPoints);
-        double lengthPoly = p1.getLength(arrayPoints);
+        //расчитывается длина замкнутой кривой
+        p1.getLength(arrayPoints);
     }
 }
 
@@ -46,15 +48,13 @@ class PolyLine {
     public double getLength(ArrayList<Point> listPoint) {
         this.listPoint = listPoint;
         double polyLineLength = 0;
-        for (int i = 0; i < listPoint.size(); i++) {
-            if (i == listPoint.size() - 1)
-                break;
+        for (int i = 0; i < listPoint.size()-1; i++) {
             int katet1 = listPoint.get(i + 1).x - listPoint.get(i).x;
             int katet2 = listPoint.get(i + 1).y - listPoint.get(i).y;
             double segment = Math.sqrt(katet1 * katet1 + katet2 * katet2);
             polyLineLength += segment;
         }
-        System.out.println("Длина итоговая ломаной " + polyLineLength);
+        System.out.println("Общая длина ломаной " + polyLineLength);
         return polyLineLength;
     }
 
